@@ -3,12 +3,13 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "project_name"
+name = "bdrc_images_and_ocr_downloader"
 version = "0.0.1"
 authors = [
   { name="OpenPecha", email="dev@openpecha.org" },
+  { name="Tashi Tsering", email="ta3tsering@gmail.com" },
 ]
-description = "A small example package"
+description = "This will download images and ocr from s3 for an work id that has been OCRed"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
