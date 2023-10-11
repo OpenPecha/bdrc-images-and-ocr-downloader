@@ -11,14 +11,13 @@
 
 ## Description
 
-Project description goes here.
+This include scripts to download images and OCR outputs from s3 for bdrc work ids.
 
 ## Project owner(s)
 
 <!-- Link to the repo owners' github profiles -->
 
-- [@10zinten](https://github.com/10zinten)
-- [@evanyerburgh](https://github.com/evanyerburgh)
+- [@Tashi Tsering](https://github.com/ta4tsering)
 
 ## Integrations
 
