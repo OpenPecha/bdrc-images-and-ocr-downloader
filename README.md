@@ -25,7 +25,7 @@ This include scripts to download images and OCR outputs from s3 for bdrc work id
 
 None
 ## Docs
-
+To use it you can do `python3 src/bdrc_images_and_ocr_downloader/pipeline.py --input_file_path=data/pechas_catalog.csv` 
 <!-- Update the link to the docs -->
 
 Read the docs [here](https://wiki.openpecha.org/#/dev/coding-guidelines).
