@@ -1,0 +1,19 @@
+WA0RT0420:
+  MW1KG13126_2420: {
+    "instance_id": W1KG13126,
+    "print_method": ["PrintMethod_Relief_WoodBlock"],
+    "script": ["ScriptDbuCan", "ScriptTibt"],
+  }
+  MW1PD95844_0159: {
+    "instance_id": W1PD95844,
+    "print_method": ["PrintMethod_Modern" , "PrintMethod_Offset"],
+    "script": ["ScriptDbuCan"],
+  }
+WA00KG01653:
+  MW00KG01653: {
+    "instance_id": W00KG01653,
+    "print_method": [],
+    "script": ["ScriptTibt"],
+  }
+  
+
