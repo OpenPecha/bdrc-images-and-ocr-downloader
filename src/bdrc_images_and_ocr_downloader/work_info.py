@@ -54,12 +54,12 @@ def get_image_list(wlname, image_group_lname):
 
 def get_images_s3_key(work_id):
     s3_keys = []
-    hash = get_hash(work_id)
+    s3_prefix = get_s3_prefix(work_id)
     scan_info = get_buda_scan_info(work_id)
     for image_group_id, _ in scan_info["image_groups"].items():
         images_list, image_group_suffix = get_image_list(work_id, image_group_id)
         for image in images_list:
-            s3_key = f"Works/{hash}/{work_id}/images/{work_id}-{image_group_suffix}/{image['filename']}"
+            s3_key = f"{s3_prefix}/images/{work_id}-{image_group_suffix}/{image['filename']}"
             s3_keys.append(s3_key)
     return s3_keys
 
@@ -68,3 +68,9 @@ def get_image_keys_and_s3_prefix(work_id):
     image_s3_keys = get_images_s3_key(work_id)
     s3_prefix = "/".join(image_s3_keys[0].split('/')[0:3])
     return image_s3_keys, s3_prefix
+
+def get_s3_prefix(work_id):
+    hash = get_hash(work_id)
+    s3_prefix = f"Works/{hash}/{work_id}/"
+    return s3_prefix
+

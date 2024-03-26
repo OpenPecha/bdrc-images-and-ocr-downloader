@@ -54,6 +54,21 @@ def filter_ocr_s3_keys(s3_keys):
     return s3_dict
 
 
+def download_google_books_images(work_id, image_group_id, key):
+    download_path = Path(f"./data/{work_id}/{image_group_id}/ocr")
+    download_path.mkdir(parents=True, exist_ok=True)
+    file_name = key.split('/')[-1]
+    local_file_path = f"{download_path}/{file_name}"
+    if Path(local_file_path).exists():
+        return
+    try:
+        s3_client.download_file(OCR_OUTPUT_BUCKET, key, local_file_path)
+        print(f"Downloaded {file_name} successfully.")
+    except Exception as e:
+        print(f"Error due to {e}")
+
+
+
 def download_ocr(work_id, prefix):
     s3_keys = get_s3_keys(prefix)
     s3_dict = filter_ocr_s3_keys(s3_keys)
@@ -72,3 +87,14 @@ def download_ocr(work_id, prefix):
                 except Exception as e:
                     print(f"Error due to {e}")
         break
+
+
+def filter_google_books_images_keys(s3_keys):
+    keys = []
+    for s3_key in s3_keys:
+        if s3_key.split("/")[3] == "google_books":
+            if s3_key.split("/")[4] == "batch_2022":
+                if s3_key.split("/")[5] == "output":
+                    if s3_key.split("/")[-1] == "images.zip":
+                        keys.append(s3_key)
+    return keys
