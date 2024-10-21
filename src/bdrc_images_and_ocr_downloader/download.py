@@ -54,8 +54,8 @@ def filter_ocr_s3_keys(s3_keys):
     return s3_dict
 
 
-def download_google_books_images(work_id, image_group_id, key):
-    download_path = Path(f"./data/{work_id}/{image_group_id}/ocr")
+def download_images(work_id, image_group_id, key):
+    download_path = Path(f"./data/{work_id}/{image_group_id}/")
     download_path.mkdir(parents=True, exist_ok=True)
     file_name = key.split('/')[-1]
     local_file_path = f"{download_path}/{file_name}"
@@ -97,4 +97,12 @@ def filter_google_books_images_keys(s3_keys):
                 if s3_key.split("/")[5] == "output":
                     if s3_key.split("/")[-1] == "images.zip":
                         keys.append(s3_key)
+    return keys
+
+def filter_norbuketaka_images_keys(s3_keys):
+    keys = []
+    for s3_key in s3_keys:
+        if s3_key.split("/")[3] == "vision":
+            if s3_key.split("/")[5] == "images":
+                keys.append(s3_key)
     return keys
